@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+
+    <!-- Dış pin şekli - PEMBE -->
+    <path
+        android:fillColor="#E91E63"
+        android:pathData="M24,4C18.48,4 14,8.48 14,14c0,8.4 10,22 10,22s10,-13.6 10,-22c0,-5.52 -4.48,-10 -10,-10z"/>
+
+    <!-- İç beyaz daire -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M24,10c-2.76,0 -5,2.24 -5,5c0,2.76 2.24,5 5,5s5,-2.24 5,-5c0,-2.76 -2.24,-5 -5,-5z"/>
+
+    <!-- Artı işareti (haç) - pembe -->
+    <path
+        android:fillColor="#E91E63"
+        android:pathData="M23,12h2v6h-2z"/>
+    <path
+        android:fillColor="#E91E63"
+        android:pathData="M21,14h6v2h-6z"/>
+
+    <!-- Pati işareti - pembe (küçük) -->
+    <path
+        android:fillColor="#E91E63"
+        android:pathData="M24,15.5m-1,0a1,1 0,1,1 2,0a1,1 0,1,1 -2,0"/>
+    <path
+        android:fillColor="#E91E63"
+        android:pathData="M22,14m-0.6,0a0.6,0.6 0,1,1 1.2,0a0.6,0.6 0,1,1 -1.2,0"/>
+    <path
+        android:fillColor="#E91E63"
+        android:pathData="M26,14m-0.6,0a0.6,0.6 0,1,1 1.2,0a0.6,0.6 0,1,1 -1.2,0"/>
+</vector>

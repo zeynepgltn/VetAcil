@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <group
+        android:translateX="54"
+        android:translateY="54">
+
+        <!-- Beyaz Daire Arka Plan -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M0,0m-32,0a32,32 0,1,1 64,0a32,32 0,1,1 -64,0"/>
+
+        <!-- Pembe Haç -->
+        <path
+            android:fillColor="#E91E63"
+            android:pathData="M-4,-18h8v36h-8z"/>
+        <path
+            android:fillColor="#E91E63"
+            android:pathData="M-18,-4h36v8h-36z"/>
+
+        <!-- Pembe Pati -->
+        <group android:translateY="10">
+            <path
+                android:fillColor="#E91E63"
+                android:pathData="M0,4m-4,0a4,4 0,1,1 8,0a4,4 0,1,1 -8,0"/>
+            <path
+                android:fillColor="#E91E63"
+                android:pathData="M-6,0m-2.5,0a2.5,2.5 0,1,1 5,0a2.5,2.5 0,1,1 -5,0"/>
+            <path
+                android:fillColor="#E91E63"
+                android:pathData="M6,0m-2.5,0a2.5,2.5 0,1,1 5,0a2.5,2.5 0,1,1 -5,0"/>
+            <path
+                android:fillColor="#E91E63"
+                android:pathData="M-4,-4m-2,0a2,2 0,1,1 4,0a2,2 0,1,1 -4,0"/>
+            <path
+                android:fillColor="#E91E63"
+                android:pathData="M4,-4m-2,0a2,2 0,1,1 4,0a2,2 0,1,1 -4,0"/>
+        </group>
+    </group>
+</vector>

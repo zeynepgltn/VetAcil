@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- VetAcil Pembe-Beyaz Tema -->
+    <style name="Theme.VetAcil" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Ana renk - Pembe -->
+        <item name="colorPrimary">#E91E63</item>
+        <item name="colorPrimaryVariant">#C2185B</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- İkincil renk - Açık Pembe -->
+        <item name="colorSecondary">#F8BBD0</item>
+        <item name="colorSecondaryVariant">#F48FB1</item>
+        <item name="colorOnSecondary">#000000</item>
+
+        <!-- Arka plan -->
+        <item name="android:colorBackground">#FAFAFA</item>
+        <item name="colorSurface">@color/white</item>
+
+        <!-- Metin renkleri -->
+        <item name="colorOnBackground">#000000</item>
+        <item name="colorOnSurface">#000000</item>
+
+        <!-- Durum çubuğu - Pembe -->
+        <item name="android:statusBarColor">#E91E63</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+    </style>
+</resources>

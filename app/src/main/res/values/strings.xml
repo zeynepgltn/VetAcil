@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VetAcil</string>
+    <string name="yakinlari_ara">Yakınlardaki Veterinerleri Ara</string>
+    <string name="sadece_acik">Sadece Açık Olanları Göster</string>
+    <string name="ara">ARA</string>
+    <string name="yol_tarifi">YOL TARİFİ</string>
+    <string name="foto_gonder">OLAY YERİ FOTOĞRAFI GÖNDER</string>
+    <string name="veteriner_bulunamadi">Veteriner bulunamadı</string>
+    <string name="internet_yok">İnternet bağlantısı yok</string>
+    <string name="konum_izni">Konum izni gerekli</string>
+</resources>

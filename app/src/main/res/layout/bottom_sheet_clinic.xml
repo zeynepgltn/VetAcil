@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:background="@drawable/bottom_sheet_background">
+
+        <!-- Handle Bar -->
+        <View
+            android:layout_width="40dp"
+            android:layout_height="4dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:background="#E91E63"
+            android:alpha="0.5" />
+
+        <!-- Veteriner Adı -->
+        <TextView
+            android:id="@+id/tvClinicName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#E91E63"
+            android:paddingBottom="8dp" />
+
+        <!-- Açık/Kapalı Durumu -->
+        <TextView
+            android:id="@+id/tvOpenStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="● Açık"
+            android:textSize="16sp"
+            android:textColor="#4CAF50"
+            android:textStyle="bold"
+            android:paddingBottom="16dp" />
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#F8BBD0"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Adres -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textSize="20sp"
+                android:paddingEnd="12dp" />
+
+            <TextView
+                android:id="@+id/tvAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Adres bilgisi"
+                android:textSize="15sp"
+                android:textColor="#333333" />
+        </LinearLayout>
+
+        <!-- Telefon -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textSize="20sp"
+                android:paddingEnd="12dp" />
+
+            <TextView
+                android:id="@+id/tvPhone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Telefon"
+                android:textSize="15sp"
+                android:textColor="#333333" />
+        </LinearLayout>
+
+        <!-- Mesafe -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textSize="20sp"
+                android:paddingEnd="12dp" />
+
+            <TextView
+                android:id="@+id/tvDistance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0.0 km"
+                android:textSize="15sp"
+                android:textColor="#333333" />
+        </LinearLayout>
+
+        <!-- Butonlar - PEMBE TEMA -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="12dp">
+
+            <Button
+                android:id="@+id/btnCall"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_weight="1"
+                android:text="@string/ara"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="#E91E63"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btnDirections"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_weight="1"
+                android:text="@string/yol_tarifi"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:backgroundTint="#F8BBD0"
+                android:textColor="#000000" />
+
+        </LinearLayout>
+
+        <!-- FOTO GÖNDER Butonu - Pembe -->
+        <Button
+            android:id="@+id/btnSendPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="@string/foto_gonder"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:backgroundTint="#F48FB1"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="16dp" />
+
+    </LinearLayout>
+
+</ScrollView>

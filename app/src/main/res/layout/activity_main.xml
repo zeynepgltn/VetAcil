@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <!-- Harita -->
+    <org.osmdroid.views.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Info TextView -->
+    <TextView
+        android:id="@+id/tvInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Konum alınıyor..."
+        android:textAlignment="center"
+        android:padding="8dp"
+        android:textSize="14sp"
+        android:textColor="#666666" />
+
+    <!-- Progress Bar -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <!-- Filtre butonu - PEMBE AÇIK -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnFilterOpen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sadece_acik"
+        app:icon="@android:drawable/ic_menu_search"
+        android:backgroundTint="#F8BBD0"
+        android:textColor="#000000" />
+
+    <!-- Arama butonu - PEMBE KOYU -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/yakinlari_ara"
+        app:icon="@android:drawable/ic_menu_mapmode"
+        android:backgroundTint="#E91E63"
+        android:textColor="#FFFFFF" />
+
+    <!-- Konuma Dön FAB -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabMyLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        app:srcCompat="@android:drawable/ic_menu_mylocation"
+        app:backgroundTint="#E91E63"
+        app:tint="#FFFFFF"
+        android:contentDescription="Konuma dön" />
+
+</LinearLayout>
