@@ -41,6 +41,9 @@ import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
+import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 
 class MainActivity : AppCompatActivity() {
 
@@ -52,6 +55,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvInfo: TextView
     private lateinit var progressBar: ProgressBar
 
+    private lateinit var adView: AdView
+
     // Location
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private var currentLocation: Location? = null
@@ -61,6 +66,7 @@ class MainActivity : AppCompatActivity() {
     private var currentPhotoPath: String? = null
     private var currentPhotoUri: Uri? = null
     private var currentClinicForPhoto: VeterinaryClinic? = null
+
 
     //Kamera launcher
     private val takePictureLauncher = registerForActivityResult(
@@ -112,9 +118,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        MobileAds.initialize(this) {}
+
         super.onCreate(savedInstanceState)
 
+        MobileAds.initialize(this) {}
         Configuration.getInstance().load(
             applicationContext,
             getSharedPreferences("osmdroid", MODE_PRIVATE)
@@ -127,6 +137,10 @@ class MainActivity : AppCompatActivity() {
         setupLocationClient()
         setupClickListeners()
         checkPermissionsAndStart()
+
+        adView = findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
     }
 
     private fun initViews() {
