@@ -1,81 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".MainActivity">
 
-    <!-- Harita -->
-    <org.osmdroid.views.MapView
-        android:id="@+id/mapView"
+    <!-- Ana İçerik -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <!-- Info TextView -->
-    <TextView
-        android:id="@+id/tvInfo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Konum alınıyor..."
-        android:textAlignment="center"
-        android:padding="8dp"
-        android:textSize="14sp"
-        android:textColor="#666666" />
+        <!-- AdMob Banner - EN ÜSTTE -->
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:adSize="BANNER"
+            app:adUnitId="ca-app-pub-8333362162867706/6511346683" />
 
-    <!-- Progress Bar -->
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="gone" />
+        <!-- Harita -->
+        <org.osmdroid.views.MapView
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
-    <!-- Filtre butonu - PEMBE AÇIK -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnFilterOpen"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/sadece_acik"
-        app:icon="@android:drawable/ic_menu_search"
-        android:backgroundTint="#F8BBD0"
-        android:textColor="#000000" />
+        <!-- Info TextView -->
+        <TextView
+            android:id="@+id/tvInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Konum alınıyor..."
+            android:textAlignment="center"
+            android:padding="8dp"
+            android:textSize="14sp"
+            android:textColor="#666666" />
 
-    <!-- Arama butonu - PEMBE KOYU -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSearch"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/yakinlari_ara"
-        app:icon="@android:drawable/ic_menu_mapmode"
-        android:backgroundTint="#E91E63"
-        android:textColor="#FFFFFF" />
+        <!-- Progress Bar -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
 
-    <!-- Konuma Dön FAB -->
+        <!-- Filtre butonu - PEMBE AÇIK -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFilterOpen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sadece_acik"
+            app:icon="@android:drawable/ic_menu_search"
+            android:backgroundTint="#F8BBD0"
+            android:textColor="#000000" />
+
+        <!-- Arama butonu - PEMBE KOYU -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/yakinlari_ara"
+            app:icon="@android:drawable/ic_menu_mapmode"
+            android:backgroundTint="#E91E63"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+
+    <!-- Konuma Dön FAB - SAĞ ALT -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabMyLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:layout_margin="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="180dp"
         app:srcCompat="@android:drawable/ic_menu_mylocation"
         app:backgroundTint="#E91E63"
         app:tint="#FFFFFF"
         android:contentDescription="Konuma dön" />
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="match_parent"
+    <!-- Debug Menü FAB - SOL ALT -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabDebugMenu"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        android:layout_gravity="start|bottom"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="180dp"
+        app:srcCompat="@android:drawable/ic_menu_edit"
+        app:backgroundTint="#FF9800"
+        app:tint="#FFFFFF"
+        app:fabSize="mini"
+        android:contentDescription="Debug Menü"
+        android:visibility="visible" />
 
-        android:layout_alignParentBottom="true" />
-
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

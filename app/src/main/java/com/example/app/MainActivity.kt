@@ -44,6 +44,8 @@ import java.util.*
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
+import com.vetacil.app.utils.DebugLocationBottomSheet
+import org.osmdroid.library.BuildConfig
 
 class MainActivity : AppCompatActivity() {
 
@@ -66,6 +68,11 @@ class MainActivity : AppCompatActivity() {
     private var currentPhotoPath: String? = null
     private var currentPhotoUri: Uri? = null
     private var currentClinicForPhoto: VeterinaryClinic? = null
+
+
+    private lateinit var fabDebugMenu: FloatingActionButton  // YENİ
+    private var isUsingDebugLocation = false  // YENİ
+    private var debugLocationName: String? = null  // YENİ
 
 
     //Kamera launcher
@@ -120,6 +127,11 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        if (BuildConfig.DEBUG) {
+            // Test için her zaman göster
+            fabDebugMenu.visibility = View.VISIBLE
+        }
+
         MobileAds.initialize(this) {}
 
         super.onCreate(savedInstanceState)
@@ -136,6 +148,8 @@ class MainActivity : AppCompatActivity() {
         setupMap()
         setupLocationClient()
         setupClickListeners()
+        // Debug modunda olup olmadığını kontrol et
+
         checkPermissionsAndStart()
 
         adView = findViewById(R.id.adView)
@@ -150,6 +164,7 @@ class MainActivity : AppCompatActivity() {
         btnSearch = findViewById(R.id.btnSearch)
         tvInfo = findViewById(R.id.tvInfo)
         progressBar = findViewById(R.id.progressBar)
+        fabDebugMenu = findViewById(R.id.fabDebugMenu)
     }
 
     private fun setupMap() {
@@ -184,6 +199,10 @@ class MainActivity : AppCompatActivity() {
                 mapView.controller.setZoom(16.0)
             } ?: run {
                 getCurrentLocation()
+            }
+            // Debug menü butonu
+            fabDebugMenu.setOnClickListener {
+                showDebugLocationMenu()
             }
         }
 
@@ -239,6 +258,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getCurrentLocation() {
+        // Debug modundaysa gerçek konum alma
+        if (isUsingDebugLocation) {
+            Toast.makeText(this, "Debug modu aktif - ${debugLocationName ?: "Test konumu"}", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         if (ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -277,18 +302,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addUserMarker(geoPoint: GeoPoint) {
-        mapView.overlays.removeAll { it is Marker && it.title == "Konumunuz" }
+        mapView.overlays.removeAll { it is Marker && (it.title == "Konumunuz" || it.title?.contains("Test Konumu") == true) }
 
         val marker = Marker(mapView)
         marker.position = geoPoint
-        marker.title = "Konumunuz"
+        marker.title = if (isUsingDebugLocation) {
+            "Test Konumu ${debugLocationName?.let { "($it)" } ?: ""}"
+        } else {
+            "Konumunuz"
+        }
         marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
         marker.icon = ContextCompat.getDrawable(this, R.drawable.ic_my_location)
 
         mapView.overlays.add(marker)
         mapView.invalidate()
     }
-
     private fun searchNearbyVeterinaries(
         latitude: Double,
         longitude: Double,
@@ -657,5 +685,59 @@ class MainActivity : AppCompatActivity() {
         } catch (e: Exception) {
             Toast.makeText(this, "Email uygulaması bulunamadı", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    // Debug menüsünü göster
+    private fun showDebugLocationMenu() {
+        val bottomSheet = DebugLocationBottomSheet { geoPoint ->
+            if (geoPoint.latitude == 0.0 && geoPoint.longitude == 0.0) {
+                // Gerçek konum kullan
+                isUsingDebugLocation = false
+                debugLocationName = null
+                getCurrentLocation()
+                Toast.makeText(this, "Gerçek konum kullanılıyor", Toast.LENGTH_SHORT).show()
+            } else {
+                // Debug konum kullan
+                isUsingDebugLocation = true
+                setDebugLocation(geoPoint.latitude, geoPoint.longitude)
+            }
+        }
+        bottomSheet.show(supportFragmentManager, DebugLocationBottomSheet.TAG)
+    }
+
+    // Debug konumu ayarla
+    private fun setDebugLocation(latitude: Double, longitude: Double) {
+        // Fake location oluştur
+        currentLocation = Location("debug").apply {
+            this.latitude = latitude
+            this.longitude = longitude
+            accuracy = 10f
+        }
+
+        // Haritayı hareket ettir
+        val geoPoint = GeoPoint(latitude, longitude)
+        mapView.controller.setCenter(geoPoint)
+        mapView.controller.setZoom(15.0)
+
+        // Kullanıcı marker'ını ekle
+        addUserMarker(geoPoint)
+
+        // Bilgi göster
+        val locationName = when {
+            latitude in 40.9..41.1 && longitude in 28.9..29.1 -> "İstanbul (Test)"
+            latitude in 39.8..40.0 && longitude in 32.7..32.9 -> "Ankara (Test)"
+            latitude in 38.3..38.5 && longitude in 27.0..27.2 -> "İzmir (Test)"
+            latitude in 38.4..38.6 && longitude in 27.6..27.8 -> "Turgutlu (Test)"
+            else -> "Test Konumu"
+        }
+
+        debugLocationName = locationName
+        tvInfo.text = "🔧 $locationName - Konum ayarlandı! Arama yapabilirsiniz"
+
+        Toast.makeText(
+            this,
+            "Test konumu: $locationName\n ${String.format("%.4f, %.4f", latitude, longitude)}",
+            Toast.LENGTH_LONG
+        ).show()
     }
 }

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Şehir Adı -->
+        <TextView
+            android:id="@+id/tvLocationName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="İstanbul - Taksim"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#212121" />
+
+        <!-- Açıklama -->
+        <TextView
+            android:id="@+id/tvLocationDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Taksim Meydanı"
+            android:textSize="14sp"
+            android:textColor="#666666"
+            android:layout_marginTop="4dp" />
+
+        <!-- Koordinatlar -->
+        <TextView
+            android:id="@+id/tvLocationCoordinates"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="41.0369, 28.9850"
+            android:textSize="12sp"
+            android:textColor="#999999"
+            android:layout_marginTop="4dp"
+            android:fontFamily="monospace" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
